@@ -7,10 +7,10 @@
 
 namespace DependentSelectBox;
 
-use Nette\Forms\SelectBox;
+use Nette\Forms\Controls\SelectBox;
 use InvalidArgumentException;
 use LogicException;
-use NotSupportedException;
+use Nette\NotSupportedException;
 
 // \Nette\Forms\FormContainer::extensionMethod("addDependentSelectBox", "DependentSelectBox\DependentSelectBox::formAddDependentSelectBox");
 

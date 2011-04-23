@@ -8,9 +8,9 @@
 namespace DependentSelectBox;
 
 use Nette\Environment;
-use Nette\Application\JsonResponse;
+use Nette\Application\Responses\JsonResponse;
 
-// \Nette\Forms\FormContainer::extensionMethod("addJsonDependentSelectBox", "DependentSelectBox\JsonDependentSelectBox::formAddJsonDependentSelectBox");
+// \Nette\Forms\Container::extensionMethod("addJsonDependentSelectBox", "DependentSelectBox\JsonDependentSelectBox::formAddJsonDependentSelectBox");
 
 class JsonDependentSelectBox extends DependentSelectBox {
 
