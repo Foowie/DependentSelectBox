@@ -19,7 +19,7 @@ class JsonDependentSelectBox extends DependentSelectBox
 
 	public function submitButtonHandler($button) {
 		parent::submitButtonHandler($button);
-		if ($this->getPresenter()->isAjax())
+		if ($this->getParent()->getPresenter()->isAjax())
 			$this->addJsonResponseItem($this);
 	}
 
