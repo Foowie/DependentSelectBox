@@ -123,6 +123,7 @@ class DependentSelectBox extends SelectBox {
 		if($value !== null && !$this->hasEmptyValue() && $this->hasAnyParentEmptyValue()) {
 			throw new LogicException("Cant set value of dependent component when parent have no value ! (Control: '$this->name')");
 		}
+		if($value != '')
 		parent::setValue($value);
 		if($refreshTree && !$this->hasEmptyValue())
 			$this->refresh(false);
