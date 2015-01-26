@@ -17,7 +17,7 @@ use Nette\InvalidStateException;
 class JsonDependentSelectBox extends DependentSelectBox
 {
 
-	public static $jsonResoponseItems = array();
+	public static $jsonResponseItems = array();
 
 	public function submitButtonHandler($button) {
 		parent::submitButtonHandler($button);
@@ -26,21 +26,21 @@ class JsonDependentSelectBox extends DependentSelectBox
 	}
 
 	protected function addJsonResponseItem($selectBox) {
-		self::$jsonResoponseItems[] = $selectBox;
+		self::$jsonResponseItems[] = $selectBox;
 		if($selectBox instanceof DependentSelectBox)
 			foreach($selectBox->childs as $child)
 				$child->addJsonResponseItem($child);
 	}
 
 	public static function tryJsonResponse(Presenter $presenter) {
-		if(empty(self::$jsonResoponseItems))
+		if(empty(self::$jsonResponseItems))
 			return;
 		
 		$payload = array(
 			"type" => "JsonDependentSelectBoxResponse",
 			"items" => array()
 		);
-		foreach(self::$jsonResoponseItems as $item) {
+		foreach(self::$jsonResponseItems as $item) {
 			$payload["items"][$item->getHtmlId()] = array(
 				"selected" => $item->getValue(),
 				"items" => $item->getItems()
