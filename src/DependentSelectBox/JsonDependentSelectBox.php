@@ -35,15 +35,19 @@ class JsonDependentSelectBox extends DependentSelectBox
 	public static function tryJsonResponse(Presenter $presenter) {
 		if(empty(self::$jsonResoponseItems))
 			return;
-		
+
 		$payload = array(
 			"type" => "JsonDependentSelectBoxResponse",
 			"items" => array()
 		);
 		foreach(self::$jsonResoponseItems as $item) {
+			$items = $item->getItems();
 			$payload["items"][$item->getHtmlId()] = array(
 				"selected" => $item->getValue(),
-				"items" => $item->getItems()
+				"items" => array(
+					"keys" => array_keys($items),
+					"values" => array_values($items),
+				),
 			);
 		}
 		$response = new JsonResponse($payload);
@@ -65,5 +69,5 @@ class JsonDependentSelectBox extends DependentSelectBox
 	public static function register($methodName = "addJsonDependentSelectBox") {
 		FormContainer::extensionMethod($methodName, "DependentSelectBox\JsonDependentSelectBox::Container_prototype_addJsonDependentSelectBox");
 	}
-	
+
 }

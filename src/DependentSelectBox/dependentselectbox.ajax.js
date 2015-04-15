@@ -31,11 +31,12 @@ $.nette.ext('dependentselectbox', {
 	updateSelectBox: function(id, selectedKey, items) {
 		$("#" + id + " option").remove();
 		var select = $("#" + id);
-		for (var i in items) {
-			var item = $("<option></option>").attr("value", i).html(items[i]);
-			if (i === selectedKey)
+		for (var i = 0; i < items.keys.length; i++) {
+			var key = items.keys[i];
+			var item = $("<option></option>").attr("value", key).html(items.values[i]);
+			if (key === selectedKey)
 				item.attr("selected", "selected");
-			if (i === "")
+			if (key === "")
 				select.prepend(item);
 			else
 				select.append(item);
